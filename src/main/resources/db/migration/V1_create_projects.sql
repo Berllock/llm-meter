@@ -1,0 +1,8 @@
+CREATE TABLE projects(
+    id BIGSERIAL PRIMARY KEY,
+    uuid UUID NOT NULL UNIQUE,
+    name VARCHAR(255) NOT NULL,
+    status VARCHAR(30) NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE NOT NULL
+);
+

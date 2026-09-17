@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: llm-meter-postgres
+    environment:
+      POSTGRES_DB: llm_meter
+      POSTGRES_USER: llm_meter
+      POSTGRES_PASSWORD: llm_meter
+    ports:
+      - "5432:5432"
+    volumes:
+      - llm_meter_data:/var/lib/postgresql/data
+
+volumes:
+  llm_meter_data:
