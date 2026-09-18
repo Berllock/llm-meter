@@ -18,7 +18,7 @@ public class ProjectDao {
         return project;
     }
 
-    public Optional<Project> findById(Long id) {
+    public Optional<Project> findByUuid(UUID uuid) {
         return entityManager.createQuery(
                 """
                 SELECT p
@@ -27,7 +27,7 @@ public class ProjectDao {
                 """,
                 Project.class
         )
-                .setParameter("uuid", id)
+                .setParameter("uuid", uuid)
                 .getResultList()
                 .stream()
                 .findFirst();
