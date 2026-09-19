@@ -12,9 +12,9 @@ class ProjectTest {
 
         Project p = new Project("ClaudeMeter");
 
-        assertNotNull(p.getUuid);
-        asssertEquals("ClaudeMeter", p.getName());
-        asssertEquals(ProjectStatus.ACTIVE, p.getStatus());
+        assertNotNull(p.getUuid());
+        assertEquals("ClaudeMeter", p.getName());
+        assertEquals(ProjectStatus.ACTIVE, p.getStatus());
         assertNotNull(p.getCreatedAt());
     
         //Since the entity has not been persisted yet, it has no database ID.
@@ -22,11 +22,12 @@ class ProjectTest {
     }
 
     //Test the deactivate behavior
-    @Test shouldDeactivateProject() {
+    @Test 
+    void shouldDeactivateProject() {
         Project p = new Project("ClaudeMeter");
 
         p.deactivate();
-        asssertEquals(ProjectStatus.INACTIVE, p.getStatus());
+        assertEquals(ProjectStatus.INACTIVE, p.getStatus());
     }
 
     
