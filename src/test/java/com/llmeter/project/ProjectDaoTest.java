@@ -43,6 +43,4 @@ class ProjectDaoTest {
         assertEquals(originalStatus, persistedProject.getStatus());
         assertNotNull(persistedProject.getCreatedAt());
     }
-
-
 }
