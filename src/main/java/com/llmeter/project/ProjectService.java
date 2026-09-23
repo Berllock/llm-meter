@@ -13,9 +13,11 @@ public class ProjectService {
     }
 
     @Transactional
-    public Project create(String name) {
-        Project project = new Project(name);
+    public Project create(final String name) {
+
+        final Project project = new Project(name);
         return projectDao.save(project);
+
     }
 
 

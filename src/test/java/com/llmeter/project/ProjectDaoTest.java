@@ -23,7 +23,7 @@ class ProjectDaoTest {
     //Validate data persistence in database
     @Test
     void shouldPersistAndFindProject() {
-        Project p = new Project("ClaudeMeter");
+        final Project p = new Project("ClaudeMeter");
 
         UUID originalUuid = p.getUuid();
         String originalName = p.getName();
@@ -35,7 +35,7 @@ class ProjectDaoTest {
         entityManager.clear();
 
 
-        Project persistedProject = projectDao.findByUuid(originalUuid).orElseThrow();
+        final Project persistedProject = projectDao.findByUuid(originalUuid).orElseThrow();
 
         assertNotNull(persistedProject.getId());
         assertEquals(originalUuid, persistedProject.getUuid());
