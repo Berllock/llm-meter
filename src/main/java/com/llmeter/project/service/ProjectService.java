@@ -19,6 +19,15 @@ public class ProjectService {
         return projectDao.save(project);
 
     }
+    
+    @Transactional(readOnly = true)
+    public Project get(final UUID uuid) {
+
+        return projectDao.findByUuid(uuid)
+                .orElseThrow(
+                        () -> new ProjectNotFoundException(uuid)
+                );
+    }
 
 
 

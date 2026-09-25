@@ -35,4 +35,13 @@ public class ProjectController {
                 .body(response);
     }
 
+    @GetMapping("/{uuid}")
+    public ResponseEntity<ProjectResponse> get (
+        @PathVariable UUID uuid) {
+
+            final Project project = projectService.get(uuid);
+            final ProjectResponse response = ProjectResponse.from(project);
+
+            return ResponseEntity.ok(response);
+        }
 }
