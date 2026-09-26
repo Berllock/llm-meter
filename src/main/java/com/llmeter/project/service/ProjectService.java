@@ -1,5 +1,10 @@
-package com.llmeter.project;
+package com.llmeter.project.service;
 
+import java.util.UUID;
+
+import com.llmeter.project.dao.ProjectDao;
+import com.llmeter.project.domain.Project;
+import com.llmeter.project.exception.ProjectNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

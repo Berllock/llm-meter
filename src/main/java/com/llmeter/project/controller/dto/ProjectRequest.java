@@ -1,4 +1,4 @@
-package com.llmeter.project;
+package com.llmeter.project.controller.dto;
 
 import jakarta.validation.constraints.NotBlank;
 

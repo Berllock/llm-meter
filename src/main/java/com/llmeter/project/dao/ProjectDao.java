@@ -1,12 +1,13 @@
-package com.llmeter.project;
-
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import org.springframework.stereotype.Repository;
+package com.llmeter.project.dao;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+
+import com.llmeter.project.domain.Project;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import org.springframework.stereotype.Repository;
 
 @Repository
 public class ProjectDao {

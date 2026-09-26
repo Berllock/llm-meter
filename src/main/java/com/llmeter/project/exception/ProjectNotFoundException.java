@@ -1,4 +1,4 @@
-package com.llmeter.project;
+package com.llmeter.project.exception;
 
 import java.util.UUID;
 

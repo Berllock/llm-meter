@@ -1,5 +1,7 @@
 package com.llmeter.project;
 
+import com.llmeter.project.domain.Project;
+import com.llmeter.project.domain.ProjectStatus;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

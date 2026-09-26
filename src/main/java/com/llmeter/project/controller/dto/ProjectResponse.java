@@ -1,7 +1,10 @@
-package com.llmeter.project;
+package com.llmeter.project.controller.dto;
 
 import java.time.Instant;
 import java.util.UUID;
+
+import com.llmeter.project.domain.Project;
+import com.llmeter.project.domain.ProjectStatus;
 
 public record ProjectResponse(
         UUID uuid,
