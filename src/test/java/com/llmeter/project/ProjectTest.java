@@ -23,7 +23,7 @@ class ProjectTest {
         assertNull(p.getId());
     }
 
-    //Test the deactivate behavior
+    //Test the deactivated behavior
     @Test 
     void shouldDeactivateProject() {
         Project p = new Project("ClaudeMeter");
