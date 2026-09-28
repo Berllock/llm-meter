@@ -17,8 +17,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class ProjectServiceTest {
@@ -83,4 +82,42 @@ class ProjectServiceTest {
         assertEquals("Project not found: " + uuid, exception.getMessage());
         verify(projectDao).findByUuid(uuid);
     }
+
+    @Test
+    void shouldDeactivateExistingProject() {
+        final Project project = new Project("ClaudeMeter");
+        final UUID uuid = project.getUuid();
+
+        when(projectDao.findByUuid(uuid))
+                .thenReturn(Optional.of(project));
+
+        projectService.deactivate(uuid);
+
+        assertEquals(ProjectStatus.INACTIVE, project.getStatus());
+
+        verify(projectDao).findByUuid(uuid);
+        verify(projectDao, never()).save(any(Project.class));
+    }
+
+
+    @Test
+    void shouldActivateExistingProject() {
+        final Project project = new Project("ClaudeMeter");
+        final UUID uuid = project.getUuid();
+
+        project.deactivate();
+
+        assertEquals(ProjectStatus.INACTIVE, project.getStatus());
+
+        when(projectDao.findByUuid(uuid))
+                .thenReturn(Optional.of(project));
+
+        projectService.activate(uuid);
+
+        assertEquals(ProjectStatus.ACTIVE, project.getStatus());
+
+        verify(projectDao).findByUuid(uuid);
+        verify(projectDao, never()).save(any(Project.class));
+    }
+
 }

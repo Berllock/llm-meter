@@ -34,6 +34,21 @@ public class ProjectService {
                 );
     }
 
+    @Transactional
+    public void deactivate(UUID uuid) {
+        final Project project = projectDao.findByUuid(uuid)
+                .orElseThrow(
+                        () -> new ProjectNotFoundException(uuid)
+                );
+        project.deactivate();
+    }
 
-
+    @Transactional
+    public void activate(UUID uuid) {
+        final Project project = projectDao.findByUuid(uuid)
+                .orElseThrow(
+                        () -> new ProjectNotFoundException(uuid)
+                );
+        project.activate();
+    }
 }

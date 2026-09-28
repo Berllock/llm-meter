@@ -9,12 +9,7 @@ import com.llmeter.project.domain.Project;
 import com.llmeter.project.service.ProjectService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/v1/projects")
@@ -50,5 +45,23 @@ public class ProjectController {
             final ProjectResponse response = ProjectResponse.from(project);
 
             return ResponseEntity.ok(response);
+        }
+
+    @PatchMapping("/{uuid}/deactivate")
+    public ResponseEntity<Void> deactivate (
+        @PathVariable UUID uuid) {
+
+            projectService.deactivate(uuid);
+
+            return ResponseEntity.noContent().build();
+        }
+
+    @PatchMapping("/{uuid}/activate")
+    public ResponseEntity<Void> activate (
+        @PathVariable UUID uuid) {
+
+            projectService.activate(uuid);
+
+            return ResponseEntity.noContent().build();
         }
 }
